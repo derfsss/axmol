@@ -40,4 +40,6 @@ THE SOFTWARE.
 #    include "platform/winrt/StdC-winrt.h"
 #elif AX_TARGET_PLATFORM == AX_PLATFORM_LINUX
 #    include "platform/linux/StdC-linux.h"
+#elif AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+#    include "platform/amigaos4/StdC-amigaos4.h"
 #endif

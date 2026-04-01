@@ -33,6 +33,7 @@ NS_AX_BACKEND_BEGIN
 
 CommandBufferGLES2::CommandBufferGLES2()
 {
+#if AX_TARGET_PLATFORM != AX_PLATFORM_AMIGAOS4
     if (glDrawElementsInstancedEXT)
         glDrawElementsInstanced = glDrawElementsInstancedEXT;
     else if (glDrawElementsInstancedANGLE)
@@ -45,6 +46,7 @@ CommandBufferGLES2::CommandBufferGLES2()
 
     if (!glDrawElementsInstanced)
         AXLOGD("{}", "Device not support instancing draw");
+#endif
 }
 
 void CommandBufferGLES2::drawElementsInstanced(PrimitiveType primitiveType,
@@ -54,17 +56,24 @@ void CommandBufferGLES2::drawElementsInstanced(PrimitiveType primitiveType,
                                                int instanceCount,
                                                bool wireframe)
 {
+#if AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+    return;  // instancing not available via libGLESv2.a
+#else
     if (!glDrawElementsInstanced)
         return;
     CommandBufferGL::drawElementsInstanced(primitiveType, indexType, count, offset, instanceCount, wireframe);
+#endif
 }
 
 void CommandBufferGLES2::bindInstanceBuffer(ProgramGL* program, uint32_t& usedBits) const
 {
-
+#if AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+    return;
+#else
     if (!glDrawElementsInstanced)
         return;
     CommandBufferGL::bindInstanceBuffer(program, usedBits);
+#endif
 }
 
 NS_AX_BACKEND_END

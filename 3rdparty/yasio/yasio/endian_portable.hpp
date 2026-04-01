@@ -99,9 +99,9 @@ SOFTWARE.
               ( ((l) << 56) & 0xFF00000000000000LL ) )
 #else
 #  pragma message("Building yasio on BIG ENDIAN machine")
-#  define YASIO__SWAP_SHORT(s) (void)s
-#  define YASIO__SWAP_LONG(l) (void)l
-#  define YASIO__SWAP_LONGLONG(l) (void)l
+#  define YASIO__SWAP_SHORT(s) (s)
+#  define YASIO__SWAP_LONG(l) (l)
+#  define YASIO__SWAP_LONGLONG(l) (l)
 #endif
 // clang-format on
 

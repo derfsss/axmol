@@ -127,8 +127,8 @@ void Skybox::initBuffers()
 
     uint16_t idxBuf[] = {0, 1, 2, 0, 2, 3};
 
-    _customCommand.createVertexBuffer(sizeof(Vec3), sizeof(vexBuf), CustomCommand::BufferUsage::STATIC);
-    _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, 6, CustomCommand::BufferUsage::STATIC);
+    _customCommand.createVertexBuffer(sizeof(Vec3), sizeof(vexBuf), CustomCommand::BufferUsage::AX_STATIC);
+    _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, 6, CustomCommand::BufferUsage::AX_STATIC);
 
     _customCommand.updateVertexBuffer(&vexBuf[0], sizeof(vexBuf));
     _customCommand.updateIndexBuffer(&idxBuf[0], sizeof(idxBuf));

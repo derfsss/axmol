@@ -230,6 +230,13 @@ THE SOFTWARE.
     #include "platform/wasm/StdC-wasm.h"
 #endif // AX_TARGET_PLATFORM == AX_PLATFORM_WASM
 
+#if (AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4)
+#    include "platform/amigaos4/Application-amigaos4.h"
+#    include "platform/RenderViewImpl.h"
+#    include "platform/amigaos4/GL-amigaos4.h"
+#    include "platform/amigaos4/StdC-amigaos4.h"
+#endif  // AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+
 // script_support
 #include "base/ScriptSupport.h"
 

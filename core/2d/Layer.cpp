@@ -387,7 +387,7 @@ LayerRadialGradient::LayerRadialGradient()
     _expandLocation     = pipelinePS->getUniformLocation("u_expand");
 
     _customCommand.createVertexBuffer(sizeof(_vertices[0]), sizeof(_vertices) / sizeof(_vertices[0]),
-                                      CustomCommand::BufferUsage::STATIC);
+                                      CustomCommand::BufferUsage::AX_STATIC);
     _customCommand.setDrawType(CustomCommand::DrawType::ARRAY);
     _customCommand.setPrimitiveType(CustomCommand::PrimitiveType::TRIANGLE_STRIP);
 }

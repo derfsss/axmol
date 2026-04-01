@@ -1,0 +1,22 @@
+#pragma once
+
+#include "platform/PlatformMacros.h"
+
+#include <float.h>
+#include <math.h>
+#include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
+#include <stdint.h>
+#include <limits.h>
+
+#ifndef MIN
+#    define MIN(x, y) (((x) > (y)) ? (y) : (x))
+#endif
+
+#ifndef MAX
+#    define MAX(x, y) (((x) < (y)) ? (y) : (x))
+#endif

@@ -737,7 +737,7 @@ Terrain::ChunkIndices Terrain::insertIndicesLOD(int neighborLod[4], int selfLod,
     lodIndices._chunkIndices._size = size;
 
     auto buffer = backend::DriverBase::getInstance()->newBuffer(sizeof(uint16_t) * size, backend::BufferType::INDEX,
-                                                            backend::BufferUsage::STATIC);
+                                                            backend::BufferUsage::AX_STATIC);
     buffer->updateData(indices, sizeof(uint16_t) * size);
 
     AX_SAFE_RELEASE_NULL(lodIndices._chunkIndices._indexBuffer);
@@ -775,7 +775,7 @@ Terrain::ChunkIndices Terrain::insertIndicesLODSkirt(int selfLod, uint16_t* indi
     skirtIndices._chunkIndices._size = size;
 
     auto buffer = backend::DriverBase::getInstance()->newBuffer(sizeof(uint16_t) * size, backend::BufferType::INDEX,
-                                                            backend::BufferUsage::STATIC);
+                                                            backend::BufferUsage::AX_STATIC);
     buffer->updateData(indices, sizeof(uint16_t) * size);
 
     AX_SAFE_RELEASE_NULL(skirtIndices._chunkIndices._indexBuffer);

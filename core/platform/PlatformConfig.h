@@ -52,6 +52,7 @@ THE SOFTWARE.
 #define AX_PLATFORM_IOS     6
 #define AX_PLATFORM_TVOS    7
 #define AX_PLATFORM_WASM    8
+#define AX_PLATFORM_AMIGAOS4 9
 
 // alias platform macros
 #define AX_PLATFORM_WINRT      AX_PLATFORM_WINUWP
@@ -96,6 +97,12 @@ THE SOFTWARE.
 #    define AX_TARGET_PLATFORM AX_PLATFORM_LINUX
 #endif
 
+// AmigaOS 4
+#if defined(__amigaos4__) || defined(__AMIGAOS4__)
+#    undef AX_TARGET_PLATFORM
+#    define AX_TARGET_PLATFORM AX_PLATFORM_AMIGAOS4
+#endif
+
 #if defined(__EMSCRIPTEN__)
 #    undef AX_TARGET_PLATFORM
 #    define AX_TARGET_PLATFORM AX_PLATFORM_WASM
@@ -138,6 +145,8 @@ Linux: Desktop GL/Vulkan
 #        define AX_GLES_PROFILE 200
 #    elif (AX_TARGET_PLATFORM == AX_PLATFORM_WINRT)
 #        define AX_GLES_PROFILE 300
+#    elif (AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4)
+#        define AX_GLES_PROFILE 200
 #    else
 #        define AX_GLES_PROFILE 0
 #    endif

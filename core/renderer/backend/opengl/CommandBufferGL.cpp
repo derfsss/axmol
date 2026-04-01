@@ -285,8 +285,10 @@ void CommandBufferGL::drawElementsInstanced(PrimitiveType primitiveType,
         primitiveType = PrimitiveType::LINE;
 #endif
     __gl->bindBuffer(BufferType::ELEMENT_ARRAY_BUFFER, _indexBuffer->getHandler());
+#if AX_TARGET_PLATFORM != AX_PLATFORM_AMIGAOS4
     glDrawElementsInstanced(UtilsGL::toGLPrimitiveType(primitiveType), count, UtilsGL::toGLIndexType(indexType),
                             (GLvoid*)offset, instanceCount);
+#endif
     CHECK_GL_ERROR_DEBUG();
 #if !AX_GLES_PROFILE  // glPolygonMode is only supported in Desktop OpenGL
     if (wireframe)

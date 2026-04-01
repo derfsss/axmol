@@ -25,6 +25,7 @@
 
 #include "base/Logging.h"
 
+#include <pthread.h>
 #include "yasio/utils.hpp"
 #include "fmt/color.h"
 
@@ -77,8 +78,8 @@ AX_API LogItem&& preprocessLog(LogItem&& item)
 #    define xmol_gettid()       (uintptr_t)::GetCurrentThreadId()
 #    define localtime_r(utc, t) ::localtime_s(t, utc)
 #else
-#    define xmol_getpid() (uintptr_t)::getpid()
-#    define xmol_gettid() (uintptr_t)::pthread_self()
+#    define xmol_getpid() (uintptr_t)getpid()
+#    define xmol_gettid() (uintptr_t)pthread_self()
 #endif
         auto wptr              = item.prefix_buffer_;
         const auto buffer_size = sizeof(item.prefix_buffer_);

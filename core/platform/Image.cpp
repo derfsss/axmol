@@ -2701,7 +2701,7 @@ bool Image::saveImageToJPG(std::string_view filePath)
         AX_BREAK_IF(nullptr == outfile);
 
         unsigned char* outputBuffer = nullptr;
-        unsigned long outputSize    = 0;
+        size_t outputSize           = 0;
         jpeg_mem_dest(&cinfo, &outputBuffer, &outputSize);
 
         cinfo.image_width      = _width; /* image width and height, in pixels */

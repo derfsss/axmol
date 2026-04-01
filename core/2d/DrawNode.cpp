@@ -243,7 +243,7 @@ static void udpateCommand(CustomCommand& cmd, const axstd::pod_vector<V2F_C4B_T2
     }
     else
     {
-        cmd.createVertexBuffer(sizeof(V2F_C4B_T2F), buffer.size(), CustomCommand::BufferUsage::STATIC);
+        cmd.createVertexBuffer(sizeof(V2F_C4B_T2F), buffer.size(), CustomCommand::BufferUsage::AX_STATIC);
         cmd.updateVertexBuffer(buffer.data(), buffer.size() * sizeof(V2F_C4B_T2F));
     }
 

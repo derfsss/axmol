@@ -112,8 +112,13 @@ struct OpenGLState
     constexpr static GLenum BufferTargets[] = {
         GL_ARRAY_BUFFER,          // VERTEX of VAO
         GL_ELEMENT_ARRAY_BUFFER,  // INDEX of VAO
+#if AX_GLES_PROFILE >= 300 || !AX_GLES_PROFILE
         GL_UNIFORM_BUFFER,        // UNIFORM
         GL_PIXEL_PACK_BUFFER,     // PIXEL
+#else
+        0,                        // UNIFORM (not in GLES2)
+        0,                        // PIXEL (not in GLES2)
+#endif
     };
 
     constexpr static int MAX_VERTEX_ATTRIBS = 16;
@@ -289,7 +294,9 @@ struct OpenGLState
     }
     void bindUniformBufferBase(GLuint index, GLuint handle)
     {
+#if AX_GLES_PROFILE >= 300 || !AX_GLES_PROFILE
         try_callxu(glBindBufferBase, GL_UNIFORM_BUFFER, _uniformBufferState, index, handle);
+#endif
     }
 
     // useful for multi GL context before GL context switch, reset VAO state
@@ -368,7 +375,9 @@ struct OpenGLState
         const auto mask = 1 << index;
         if (!(_divisorBits & mask))
         {
-#if defined(__ANDROID__) && AX_GLES_PROFILE == 200
+#if AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+            // instancing not available
+#elif AX_GLES_PROFILE == 200
             if (glVertexAttribDivisor)
                 glVertexAttribDivisor(index, 1);
 #else
@@ -383,7 +392,9 @@ struct OpenGLState
         const auto mask = 1 << index;
         if (_divisorBits & mask)
         {
-#if defined(__ANDROID__) && AX_GLES_PROFILE == 200
+#if AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+            // instancing not available
+#elif AX_GLES_PROFILE == 200
             if (glVertexAttribDivisor)
                 glVertexAttribDivisor(index, 0);
 #else

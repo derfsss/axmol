@@ -21,6 +21,11 @@
 #ifndef MIO_MMAP_HEADER
 #define MIO_MMAP_HEADER
 
+/* AmigaOS4 clib4: _SC_PAGESIZE is defined but _SC_PAGE_SIZE is not */
+#if defined(__amigaos4__) && !defined(_SC_PAGE_SIZE)
+#define _SC_PAGE_SIZE _SC_PAGESIZE
+#endif
+
 // #include "mio/page.hpp"
 /* Copyright 2017 https://github.com/mandreyel
  *

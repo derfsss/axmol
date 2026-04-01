@@ -447,7 +447,7 @@ void ProgressTimer::updateRadial()
     {
         _indexData.resize(3 + 3 * index);
         _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, (unsigned int)_indexData.size(),
-                                         CustomCommand::BufferUsage::STATIC);
+                                         CustomCommand::BufferUsage::AX_STATIC);
     }
 
     if (!sameIndexCount)

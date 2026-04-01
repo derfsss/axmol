@@ -19,8 +19,12 @@ find_program(AXSLCC_EXE NAMES axslcc
 )
 
 if(NOT AXSLCC_EXE)
-  message(STATUS, "axslcc not found.")
-  message(FATAL_ERROR "Please run setup.ps1 again to download axslcc, and run CMake again.")
+  if(AMIGAOS4)
+    message(STATUS "axslcc not found — skipping shader compilation for AmigaOS4 cross-build")
+  else()
+    message(STATUS, "axslcc not found.")
+    message(FATAL_ERROR "Please run setup.ps1 again to download axslcc, and run CMake again.")
+  endif()
 endif()
 
 message(STATUS "AXSLCC_OUT_DIR=${AXSLCC_OUT_DIR}")

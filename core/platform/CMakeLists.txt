@@ -164,10 +164,24 @@ elseif(EMSCRIPTEN)
   if(AX_WASM_ENABLE_DEVTOOLS)
     list(APPEND _AX_PLATFORM_SPECIFIC_SRC platform/wasm/devtools-wasm.cpp)
   endif()
+elseif(AMIGAOS4)
+  set(_AX_PLATFORM_SPECIFIC_HEADER
+    platform/amigaos4/Application-amigaos4.h
+    platform/amigaos4/FileUtils-amigaos4.h
+    platform/amigaos4/StdC-amigaos4.h
+    platform/RenderViewImpl.h
+  )
+  set(_AX_PLATFORM_SPECIFIC_SRC
+    platform/amigaos4/Application-amigaos4.cpp
+    platform/amigaos4/FileUtils-amigaos4.cpp
+    platform/amigaos4/Common-amigaos4.cpp
+    platform/amigaos4/Device-amigaos4.cpp
+    platform/RenderViewImpl.cpp
+  )
 endif()
 
 # Add desktop-specific sources for platforms where GLFW is available
-if((WIN32 AND NOT WINRT) OR LINUX OR MACOSX OR WASM)
+if((WIN32 AND NOT WINRT) OR LINUX OR MACOSX OR WASM OR AMIGAOS4)
   list(APPEND _AX_PLATFORM_SPECIFIC_SRC "platform/desktop/Device-desktop.cpp")
 endif()
 

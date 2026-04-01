@@ -232,3 +232,8 @@ tests/*-tests/build_*
 
 .gitee
 release_note_draft.txt
+
+# Claude Code
+CLAUDE.md
+PLAN.md
+.claude/

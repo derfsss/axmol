@@ -1217,7 +1217,15 @@ inline bool iequals<char>(cxx17::basic_string_view<char> lhs, cxx17::basic_strin
 template <>
 inline bool iequals<wchar_t>(cxx17::basic_string_view<wchar_t> lhs, cxx17::basic_string_view<wchar_t> v)
 {
+#if defined(__amigaos4__)
+  // clib4 may not expose wcsncasecmp in C++ scope — use towlower loop
+  if (lhs.size() != v.size()) return false;
+  for (size_t i = 0; i < v.size(); ++i)
+    if (towlower(lhs[i]) != towlower(v[i])) return false;
+  return true;
+#else
   return lhs.size() == v.size() && ::wcsncasecmp(lhs.data(), v.data(), v.size()) == 0;
+#endif
 }
 #endif
 template <typename _T1, typename _T2>

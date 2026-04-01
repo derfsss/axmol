@@ -51,7 +51,7 @@ public:
      * @param type Specifies the target buffer object. The symbolic constant must be BufferType::VERTEX or
      * BufferType::INDEX.
      * @param usage Specifies the expected usage pattern of the data store. The symbolic constant must be
-     * BufferUsage::STATIC, BufferUsage::DYNAMIC.
+     * BufferUsage::AX_STATIC, BufferUsage::DYNAMIC.
      */
     BufferMTL(id<MTLDevice> mtlDevice, std::size_t size, BufferType type, BufferUsage usage);
     ~BufferMTL();

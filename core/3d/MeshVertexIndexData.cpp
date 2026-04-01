@@ -113,7 +113,7 @@ MeshVertexData* MeshVertexData::create(const MeshData& meshdata, CustomCommand::
 {
     auto vertexdata           = new MeshVertexData();
     vertexdata->_vertexBuffer = backend::DriverBase::getInstance()->newBuffer(
-        meshdata.vertex.size() * sizeof(meshdata.vertex[0]), backend::BufferType::VERTEX, backend::BufferUsage::STATIC);
+        meshdata.vertex.size() * sizeof(meshdata.vertex[0]), backend::BufferType::VERTEX, backend::BufferUsage::AX_STATIC);
     // AX_SAFE_RETAIN(vertexdata->_vertexBuffer);
 
     vertexdata->_sizePerVertex = meshdata.getPerVertexSize();
@@ -135,7 +135,7 @@ MeshVertexData* MeshVertexData::create(const MeshData& meshdata, CustomCommand::
     {
         auto& indices = meshdata.subMeshIndices[i];
         auto indexBuffer = backend::DriverBase::getInstance()->newBuffer(
-            indices.bsize(), backend::BufferType::INDEX, backend::BufferUsage::STATIC);
+            indices.bsize(), backend::BufferType::INDEX, backend::BufferUsage::AX_STATIC);
         indexBuffer->autorelease();
 #if AX_ENABLE_CACHE_TEXTURE_DATA
         indexBuffer->usingDefaultStoredData(false);

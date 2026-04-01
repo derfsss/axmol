@@ -2,7 +2,7 @@ include(CMakeParseArguments)
 
 find_program(PWSH_PROG NAMES pwsh powershell NO_PACKAGE_ROOT_PATH NO_CMAKE_PATH NO_CMAKE_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH NO_CMAKE_FIND_ROOT_PATH)
 
-if(NOT PWSH_PROG)
+if(NOT PWSH_PROG AND NOT AMIGAOS4)
   message("powershell not found.")
   message(FATAL_ERROR "Please install it https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell, and run CMake again.")
 endif()

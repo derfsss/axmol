@@ -475,7 +475,7 @@ void FileUtils::setDelegate(FileUtils* delegate)
     s_sharedFileUtils = delegate;
 }
 
-#if AX_TARGET_PLATFORM == AX_PLATFORM_WIN32 || AX_TARGET_PLATFORM == AX_PLATFORM_LINUX
+#if AX_TARGET_PLATFORM == AX_PLATFORM_WIN32 || AX_TARGET_PLATFORM == AX_PLATFORM_LINUX || AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
 std::string FileUtils::s_exeDir;
 #endif
 

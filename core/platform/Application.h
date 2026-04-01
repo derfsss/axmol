@@ -42,6 +42,8 @@ THE SOFTWARE.
 #    include "platform/winrt/Application-winrt.h"
 #elif AX_TARGET_PLATFORM == AX_PLATFORM_LINUX
 #    include "platform/linux/Application-linux.h"
+#elif AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+#    include "platform/amigaos4/Application-amigaos4.h"
 #elif AX_TARGET_PLATFORM == AX_PLATFORM_WASM
 #    include "platform/wasm/Application-wasm.h"
 #endif

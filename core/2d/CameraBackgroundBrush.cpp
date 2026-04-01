@@ -155,9 +155,9 @@ bool CameraBackgroundDepthBrush::init()
 void CameraBackgroundDepthBrush::initBuffer()
 {
     uint16_t indices[6] = {0, 1, 2, 2, 3, 0};
-    _customCommand.createVertexBuffer(sizeof(_vertices[0]), _vertices.size(), CustomCommand::BufferUsage::STATIC);
+    _customCommand.createVertexBuffer(sizeof(_vertices[0]), _vertices.size(), CustomCommand::BufferUsage::AX_STATIC);
     _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, sizeof(indices) / sizeof(indices[0]),
-                                     CustomCommand::BufferUsage::STATIC);
+                                     CustomCommand::BufferUsage::AX_STATIC);
 
     _customCommand.updateVertexBuffer(_vertices.data(), sizeof(_vertices[0]) * _vertices.size());
     _customCommand.updateIndexBuffer(indices, sizeof(indices));
@@ -399,7 +399,7 @@ void CameraBackgroundSkyBoxBrush::initBuffer()
                      Vec3(1, -1, -1), Vec3(1, 1, -1), Vec3(-1, 1, -1), Vec3(-1, -1, -1)};
 
     _customCommand.createVertexBuffer(sizeof(vexBuf[0]), sizeof(vexBuf) / sizeof(vexBuf[0]),
-                                      CustomCommand::BufferUsage::STATIC);
+                                      CustomCommand::BufferUsage::AX_STATIC);
     _customCommand.updateVertexBuffer(vexBuf, sizeof(vexBuf));
 
     // init index buffer object
@@ -412,7 +412,7 @@ void CameraBackgroundSkyBoxBrush::initBuffer()
         3, 0, 4, 3, 4, 7   // down
     };
     _customCommand.createIndexBuffer(CustomCommand::IndexFormat::U_SHORT, sizeof(idxBuf) / sizeof(idxBuf[0]),
-                                     CustomCommand::BufferUsage::STATIC);
+                                     CustomCommand::BufferUsage::AX_STATIC);
     _customCommand.updateIndexBuffer(idxBuf, sizeof(idxBuf));
 }
 

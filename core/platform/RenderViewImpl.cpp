@@ -1354,6 +1354,10 @@ void RenderViewImpl::onGLFWWindowCloseCallback(GLFWwindow* window)
 }
 
 #if (AX_TARGET_PLATFORM != AX_PLATFORM_MAC)
+#if AX_GLES_PROFILE
+// GLES2+ has FBO as core — no extension loading needed
+static bool loadFboExtensions() { return true; }
+#else
 static bool loadFboExtensions()
 {
     // If the current opengl driver doesn't have framebuffers methods, check if an extension exists
@@ -1444,6 +1448,7 @@ static bool loadFboExtensions()
     }
     return true;
 }
+#endif // !AX_GLES_PROFILE
 
 // helper
 bool RenderViewImpl::loadGL()
@@ -1452,7 +1457,9 @@ bool RenderViewImpl::loadGL()
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
-#        if !AX_GLES_PROFILE
+#        if AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
+    // GL functions linked statically via libGLESv2.a — no loader needed
+#        elif !AX_GLES_PROFILE
     if (!gladLoadGL(glfwGetProcAddress))
     {
         AXLOGE("glad: Failed to Load GL");

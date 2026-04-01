@@ -360,7 +360,7 @@ public:
      */
     virtual std::string getNativeWritableAbsolutePath() const = 0;
 
-#if AX_TARGET_PLATFORM == AX_PLATFORM_WIN32 || AX_TARGET_PLATFORM == AX_PLATFORM_LINUX
+#if AX_TARGET_PLATFORM == AX_PLATFORM_WIN32 || AX_TARGET_PLATFORM == AX_PLATFORM_LINUX || AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
     /*
      * Gets application executable root directory
      * @Note: Only present on targets: win32 and linux
@@ -869,7 +869,7 @@ protected:
      */
     std::string _writablePath;
 
-#if AX_TARGET_PLATFORM == AX_PLATFORM_WIN32 || AX_TARGET_PLATFORM == AX_PLATFORM_LINUX
+#if AX_TARGET_PLATFORM == AX_PLATFORM_WIN32 || AX_TARGET_PLATFORM == AX_PLATFORM_LINUX || AX_TARGET_PLATFORM == AX_PLATFORM_AMIGAOS4
     /*
      * The dir of executable file, only present targets: win32, linux
      */

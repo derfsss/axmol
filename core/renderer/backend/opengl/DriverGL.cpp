@@ -390,14 +390,17 @@ void main()
                 1, 2, 3   // second triangle
             };
             GLuint defaultVAO{0};
+#if AX_GLES_PROFILE != 200
             glGetIntegerv(GL_VERTEX_ARRAY_BINDING, reinterpret_cast<GLint*>(&defaultVAO));
-
-            unsigned int VBO, VAO, EBO;
+#endif
+            unsigned int VBO, VAO{0}, EBO;
+#if AX_GLES_PROFILE != 200
             glGenVertexArrays(1, &VAO);
             glGenBuffers(1, &VBO);
             glGenBuffers(1, &EBO);
 
-            glBindVertexArray(VAO);
+            if (VAO) glBindVertexArray(VAO);
+#endif
 
             glBindBuffer(GL_ARRAY_BUFFER, VBO);
             glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -448,13 +451,17 @@ void main()
             // clean render resources: VBO, VAO, EBO, program, vShader, fShader
             glDeleteBuffers(1, &VBO);
             glDeleteBuffers(1, &EBO);
+#if AX_GLES_PROFILE != 200
             glDeleteVertexArrays(1, &VAO);
+#endif
             glDeleteProgram(program);
             glDeleteShader(vShader);
             glDeleteShader(fShader);
 
+#if AX_GLES_PROFILE != 200
             // restore binding to defaultVAO
             glBindVertexArray(defaultVAO);
+#endif
         }
 
         // clean framebuffer resources

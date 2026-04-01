@@ -36,7 +36,7 @@ NS_AX_BACKEND_BEGIN
 
 enum class BufferUsage : uint32_t
 {
-    STATIC,
+    AX_STATIC,
     DYNAMIC
 };
 

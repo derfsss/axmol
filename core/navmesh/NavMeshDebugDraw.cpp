@@ -186,7 +186,7 @@ void NavMeshDebugDraw::draw(Renderer* renderer)
     if (!_vertexBuffer || _vertexBuffer->getSize() < _vertices.size() * sizeof(_vertices[0]))
     {
         _vertexBuffer = backend::DriverBase::getInstance()->newBuffer(
-            _vertices.size() * sizeof(_vertices[0]), backend::BufferType::VERTEX, backend::BufferUsage::STATIC);
+            _vertices.size() * sizeof(_vertices[0]), backend::BufferType::VERTEX, backend::BufferUsage::AX_STATIC);
         _dirtyBuffer = true;
     }
 

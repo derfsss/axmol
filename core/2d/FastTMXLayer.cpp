@@ -274,7 +274,7 @@ void FastTMXLayer::updateVertexBuffer()
     unsigned int vertexBufferSize = (unsigned int)(sizeof(V3F_C4B_T2F) * _totalQuads.size() * 4);
     if (!_vertexBuffer)
     {
-        _vertexBuffer = backend::DriverBase::getInstance()->newBuffer(vertexBufferSize, backend::BufferType::VERTEX, backend::BufferUsage::STATIC);
+        _vertexBuffer = backend::DriverBase::getInstance()->newBuffer(vertexBufferSize, backend::BufferType::VERTEX, backend::BufferUsage::AX_STATIC);
     }
     _vertexBuffer->updateData(&_totalQuads[0], vertexBufferSize);
 }

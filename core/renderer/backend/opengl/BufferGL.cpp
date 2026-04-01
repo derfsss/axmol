@@ -38,7 +38,7 @@ GLenum toGLUsage(const BufferUsage& usage)
 {
     switch (usage)
     {
-    case BufferUsage::STATIC:
+    case BufferUsage::AX_STATIC:
         return GL_STATIC_DRAW;
     case BufferUsage::DYNAMIC:
         return GL_DYNAMIC_DRAW;
@@ -90,7 +90,7 @@ void BufferGL::reloadBuffer()
 
 void BufferGL::fillBuffer(const void* data, std::size_t offset, std::size_t size)
 {
-    if (_bufferAlreadyFilled || !_needDefaultStoredData || BufferUsage::STATIC != _usage)
+    if (_bufferAlreadyFilled || !_needDefaultStoredData || BufferUsage::AX_STATIC != _usage)
         return;
 
     if (_data == nullptr)
